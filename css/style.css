@@ -8,6 +8,25 @@
     --font-body: 'Geologica', sans-serif;
   }
   
+  .tagline,
+.subtitulo-secao,
+.contato-tagline {
+  word-break: keep-all;       /* Nunca quebra uma palavra ao meio */
+  overflow-wrap: normal;     /* Mantém a palavra inteira na mesma linha */
+  white-space: nowrap;       /* Garante que a frase fique em uma única linha no desktop */
+}
+
+/* AJUSTE PARA MOBILE */
+@media (max-width: 768px) {
+  .tagline,
+  .subtitulo-secao,
+  .contato-tagline {
+    white-space: normal;             /* Permite quebrar linha APENAS entre palavras completas */
+    letter-spacing: 1.5px !important;/* Reduz o espaço entre letras para caber em telas pequenas */
+    font-size: 11px !important;      /* Ajusta levemente a fonte para não estourar a margem */
+  }
+}
+
   /* --- RESET & BASE --- */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -194,6 +213,18 @@
     }
   }
 
+  @media (max-width: 768px) {
+    /* 1. Zera ou diminui a folga DEBAIXO do Hero / Logo */
+    .hero-section {
+      padding-bottom: 30px;
+    }
+  
+    /* 2. Diminui a folga DE CIMA do Quem Somos */
+    .quem-somos-section {
+      margin-top: -100px; /* Ajuste este valor até a distância ficar ideal */
+    }
+  }
+
   /* --- SEÇÃO QUEM SOMOS --- */
 .quem-somos-section {
     background-color: var(--color-bg-dark);
@@ -255,8 +286,16 @@
   
   /* Responsividade Quem Somos */
   @media (max-width: 768px) {
+    .quem-somos-section,
+    .quem-somos-content,
+    .quem-somos-section .titulo-secao,
+    .quem-somos-section .subtitulo-secao,
+    .quem-somos-section p {
+      text-align: left !important;
+    }
+
     .quem-somos-section {
-      padding: 60px 20px;
+      padding-bottom: 10px; /* Reduz a folga inferior no celular */
     }
   }
 
@@ -471,11 +510,16 @@
   }
 
   /* --- SEÇÃO ODS (COMPROMISSO GLOBAL) --- */
-.ods-section {
-    background-color: var(--color-bg-dark);
-    padding: 80px 20px 100px;
+  .ods-section {
+    background: linear-gradient(
+      180deg, 
+      #0b1712 0%,      /* Cor escura idêntica à seção de cima */
+      #004353 25%,     /* Início do verde-petróleo fluindo suavemente */
+      #004353 100%     /* Verde-petróleo consolidado */
+    );
+    padding-top: 60px; /* Garante área para a transição acontecer */
   }
-  
+
   .ods-grid {
     display: flex;
     flex-wrap: wrap;
@@ -624,3 +668,843 @@
       height: 160px;
     }
   }
+
+/* --- BOTÃO CTA ODS (IDÊNTICO AO PRINT) --- */
+.cta-transicao {
+  padding: 50px 20px 70px;
+  margin-bottom: -10px;
+  text-align: center;
+  width: 100%;
+  background-color: #004353;
+}
+
+.btn-cta-transicao {
+  display: inline-block;
+  background-color: #1a1513; /* Caixinha bem escura */
+  color: #ffffff;
+  padding: 11px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.btn-cta-transicao:hover {
+  background-color: #405547; /* Verde-musgo/oliva do print */
+  border-color: #405547;
+  color: #f8f8d1;            /* Texto creme suave */
+  transform: translateY(-2px);
+}
+
+/* --- SEÇÃO NEWSLETTER (EXPANDIDA / TIPO HERO CARD) --- */
+.newsletter-section {
+  background-color: var(--color-bg-dark);
+  padding: 60px 20px 120px;
+}
+
+/* Libera o container pai para expandir até a borda marcada */
+.newsletter-section .container {
+  max-width: 1400px;
+}
+
+.newsletter-container {
+  background-color: #1a352c;
+  border-radius: 32px;
+  padding: 80px 70px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 70px;
+  align-items: center;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.newsletter-content .tagline {
+  color: #edb552;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.newsletter-content h2 {
+  font-family: var(--font-title);
+  font-size: clamp(38px, 4.5vw, 54px);
+  color: #ffffff;
+  margin-bottom: 24px;
+  line-height: 1.15;
+}
+
+.newsletter-content p {
+  color: #a9beb7;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.benefits-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.benefits-list li {
+  position: relative;
+  padding-left: 36px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.benefits-list li::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #edb552;
+  font-size: 20px;
+}
+
+/* --- SEÇÃO NEWSLETTER (AJUSTADA IGUAL AO PRINT) --- */
+.newsletter-section {
+  background-color: #0b1712;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.newsletter-container {
+  background-color: #1b352b;
+  border-radius: 28px;
+  padding: 55px 50px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+  width: 100%;
+  max-width: 1020px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* LADO ESQUERDO */
+.newsletter-content {
+  text-align: left;
+}
+
+.newsletter-content .tagline {
+  color: #edb552;
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.newsletter-content h2 {
+  font-family: var(--font-title);
+  font-size: clamp(30px, 3.8vw, 42px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 18px;
+  line-height: 1.15;
+}
+
+.newsletter-content p {
+  color: #b0c4bd;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.benefits-list li {
+  position: relative;
+  padding-left: 28px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.benefits-list li::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #edb552;
+  font-size: 16px;
+}
+
+/* LADO DIREITO (FORMULÁRIO) */
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.newsletter-form input[type="text"],
+.newsletter-form input[type="email"] {
+  width: 100%;
+  padding: 16px 20px;
+  background-color: rgba(55, 68, 62, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+  color: #9cb1a8;
+  text-transform: uppercase;
+}
+
+.newsletter-form input:focus {
+  border-color: #61cca0;
+}
+
+.privacy-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #b0c4bd;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.privacy-checkbox input {
+  accent-color: #61cca0;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+.btn-newsletter {
+  background-color: #11231a;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 6px;
+}
+
+.btn-newsletter:hover {
+  background-color: #1a3327;
+  border-color: #61cca0;
+}
+
+.spam-notice {
+  color: #728c82;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 880px) {
+  .newsletter-container {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 35px;
+  }
+}
+
+/* FORMULÁRIO */
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.newsletter-form input[type="text"],
+.newsletter-form input[type="email"] {
+  width: 100%;
+  padding: 22px 26px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+  color: #8fa39b;
+  text-transform: uppercase;
+}
+
+.newsletter-form input:focus {
+  border-color: var(--color-green-accent);
+}
+
+.privacy-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #a9beb7;
+  cursor: pointer;
+}
+
+.privacy-checkbox input {
+  accent-color: var(--color-green-accent);
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.btn-newsletter {
+  background-color: #112219;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 22px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-newsletter:hover {
+  background-color: var(--color-green-accent);
+  color: var(--color-bg-dark);
+  border-color: var(--color-green-accent);
+}
+
+.spam-notice {
+  color: #638275;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .newsletter-container {
+    grid-template-columns: 1fr;
+    padding: 50px 36px;
+    gap: 40px;
+  }
+}
+
+/* FAIXA AZUL DO MAR (PARALLAX) */
+.banner-oceano {
+  width: 100%;
+  height: 350px;
+  background-image: url('/assets/images/montanha.PNG'); /* Placeholder da textura oceânica */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Ajuste mobile */
+@media (max-width: 768px) {
+  .banner-oceano {
+    height: 220px;
+    background-attachment: scroll;
+  }
+}
+
+/* --- SEÇÃO PORTFÓLIO / NOSSOS PROJETOS --- */
+.projetos-section {
+  background-color: #1c1d1d;
+  padding: 80px 20px 100px;
+}
+
+.bioma-cards-container {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+  justify-content: center;
+  margin: 40px auto 0;
+}
+
+.bioma-card-item {
+  width: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #F9FDF0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bioma-card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
+}
+
+.bioma-card-image {
+  width: 100%;
+  height: 200px;
+  background-image: var(--bg-normal);
+  background-size: cover;
+  background-position: center;
+}
+
+.bioma-card-content {
+  padding: 22px 20px;
+  text-align: left;
+}
+
+.tag-status {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8a631c;
+  background-color: rgba(237, 181, 82, 0.18);
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.bioma-card-title {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2D4A32;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.bioma-card-description {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #707567;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .bioma-card-item {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+/* --- SEÇÃO CONTATO --- */
+.contato-section {
+  background-color: var(--color-bg-dark);
+  padding: 100px 20px;
+}
+
+.contato-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contato-info {
+  text-align: left;
+}
+
+.contato-info .subtitulo-secao {
+  color: #edb552;
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.contato-info .titulo-secao {
+  font-family: var(--font-title);
+  font-size: clamp(32px, 3.8vw, 46px);
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.contato-info p {
+  color: #a9beb7;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.contato-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.item-detalhe {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label-detalhe {
+  font-size: 12px;
+  font-weight: 700;
+  color: #edb552;
+  letter-spacing: 1.5px;
+}
+
+.link-detalhe {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link-detalhe:hover {
+  color: var(--color-green-accent);
+}
+
+.redes-links {
+  display: flex;
+  gap: 20px;
+}
+
+.redes-links a {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.redes-links a:hover {
+  color: var(--color-green-accent);
+}
+
+/* FORMULÁRIO DE CONTATO */
+.contato-form-box {
+  background-color: #1a352c;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.input-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a9beb7;
+  letter-spacing: 1px;
+}
+
+.input-field input,
+.input-field textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.input-field input:focus,
+.input-field textarea:focus {
+  border-color: var(--color-green-accent);
+}
+
+.btn-contato {
+  background-color: #112219;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-contato:hover {
+  background-color: var(--color-green-accent);
+  color: var(--color-bg-dark);
+  border-color: var(--color-green-accent);
+}
+
+/* --- SEÇÃO CONTATO (ATUALIZADA IGUAL AO PRINT) --- */
+.contato-section {
+  position: relative;
+  background-image: linear-gradient(rgba(13, 30, 22, 0.75), rgba(13, 30, 22, 0.75)), 
+                    url('/assets/images/arvores_contato.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 110px 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.contato-container {
+  width: 100%;
+  max-width: 680px; /* Largura ajustada para fechar certinho igual ao print */
+  text-align: left;
+}
+
+.contato-tagline {
+  color: #edb552;
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contato-titulo {
+  font-family: var(--font-title);
+  font-size: clamp(36px, 4.5vw, 48px);
+  font-weight: 700;
+  color: #f8f8d1;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.contato-descricao {
+  color: #d1dad4;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 35px;
+}
+
+/* FORMULÁRIO COM INPUTS ARREDONDADOS */
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contato-form input[type="text"],
+.contato-form input[type="email"],
+.contato-form input[type="tel"],
+.contato-form select,
+.contato-form textarea {
+  width: 100%;
+  padding: 16px 22px;
+  background-color: rgba(40, 45, 42, 0.85); /* Fundo escuro levemente translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px; /* Bordas bem arredondadas como no print */
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contato-form input::placeholder,
+.contato-form textarea::placeholder {
+  color: #b3b3b3;
+}
+
+.contato-form input:focus,
+.contato-form select:focus,
+.contato-form textarea:focus {
+  border-color: #61cca0;
+  background-color: rgba(45, 52, 48, 0.95);
+}
+
+/* SELECT CUSTOMIZADO */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.contato-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.select-wrapper::after {
+  content: '⌄';
+  position: absolute;
+  right: 22px;
+  top: 42%;
+  transform: translateY(-50%);
+  color: #b3b3b3;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.contato-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* BOTÃO VERDE MENTA IDÊNTICO */
+.btn-enviar {
+  align-self: flex-start;
+  background-color: #61cca0;
+  color: #0b1712;
+  border: none;
+  padding: 15px 30px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 4px;
+}
+
+.btn-enviar:hover {
+  background-color: #72e0b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(97, 204, 160, 0.35);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .contato-section {
+    padding: 60px 16px;
+    background-attachment: scroll;
+  }
+  .contato-descricao {
+    font-size: 15px;
+  }
+  .btn-enviar {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* --- RODAPÉ OFICIAL BIOMA --- */
+.main-footer {
+  background-color: #274146; /* Tom exato do fundo slate/teal */
+  padding: 60px 20px 40px;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 45px;
+}
+
+.footer-main-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  width: 100%;
+}
+
+/* CONTATOS */
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #5ec29b; /* Verde menta dos ícones e textos */
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.footer-contact-item svg {
+  width: 20px;
+  height: 20px;
+  fill: #5ec29b;
+  flex-shrink: 0;
+}
+
+.footer-contact-item a {
+  color: #5ec29b;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-contact-item a:hover {
+  opacity: 0.8;
+}
+
+/* SELO IMAGEM */
+.img-selo-bioma {
+  width: 135px;
+  height: auto;
+  display: block;
+}
+
+/* COPYRIGHT */
+.footer-copy p {
+  color: #7b9993;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  text-align: center;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  .footer-main-content {
+    flex-direction: column;
+    gap: 35px;
+  }
+  .footer-contact-list {
+    align-items: flex-start;
+  }
+}
+
