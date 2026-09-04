@@ -145,7 +145,7 @@
   .hero-container {
     position: relative;
     z-index: 2;
-    max-width: 1200px;
+    max-width: 1500px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -155,7 +155,7 @@
   
   .hero-text h1 {
     font-family: var(--font-title);
-    font-size: clamp(32px, 5vw, 62px);
+    font-size: clamp(38px, 6vw, 80px);
     font-weight: 700;
     line-height: 1.1;
     color: var(--color-cream);
@@ -168,7 +168,8 @@
   
   .hero-logo img {
     width: 100%;
-    max-width: 480px;
+    max-width: 600px;
+    margin-left: 100px;
     height: auto;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
   }
@@ -372,8 +373,9 @@
     height: 450px;
     border-radius: 18px;
     overflow: hidden;
-    background-size: cover;
-    background-position: center;
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
     border: none; /* Removida a borda clara */
     outline: none;
     background-color: var(--color-bg-dark); /* Garante fundo escuro sem vazar fios brancos */
@@ -387,7 +389,7 @@
   }
   
   .card-content {
-    padding: 25px 20px;
+    padding: 15px 20px;
     background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.95) 100%);
   }
   
