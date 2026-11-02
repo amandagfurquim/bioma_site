@@ -175,44 +175,65 @@
   }
   
   /* --- RESPONSIVIDADE HEADER (MOBILE & TABLET) --- */
-  @media (max-width: 868px) {
-    .mobile-toggle {
-      display: flex;
-    }
-  
-    .nav-container {
-      justify-content: flex-end;
-    }
-  
-    .nav-links {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 75%;
-      max-width: 300px;
-      height: 100vh;
-      background-color: var(--color-bg-dark);
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      box-shadow: -5px 0 25px rgba(0,0,0,0.8);
-      transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-  
-    .nav-links.active {
-      right: 0;
-    }
-  
-    .hero-container {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .hero-logo img {
-      max-width: 320px;
-    }
+@media (max-width: 868px) {
+  .mobile-toggle {
+    display: flex;
   }
+
+  .nav-container {
+    justify-content: flex-end;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--color-bg-dark);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.8);
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  /* Texto em cima, logo embaixo, ambos centralizados */
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(34px, 9vw, 56px);
+  }
+
+  .hero-logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-logo img {
+    width: 80%;
+    max-width: 280px;
+    margin: 0 auto; /* anula o margin-left: 100px do desktop */
+  }
+}
 
   @media (max-width: 768px) {
     /* 1. Zera ou diminui a folga DEBAIXO do Hero / Logo */
